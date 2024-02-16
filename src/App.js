@@ -81,6 +81,8 @@ import logo from './logo.svg';
 import react, {useState,useEffect} from 'react';
 import axios from 'axios';
 import Card from './Components/Card'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SingleBlog from './Pages/singleBlog';
 
 function App(){
   const [data, setData] = useState([])
@@ -92,6 +94,11 @@ function App(){
     fetchBlog()
   } , [])
   return(
+  <BrowserRouter>
+  <Routes>
+    <Route
+    path="/"
+    element={
     <>
     <h1 style={{margin:'10px auto', textAlign:'center'}}>Blogs</h1>
     <hr/>
@@ -108,8 +115,18 @@ function App(){
           )
         })
       }
+      
+      
+
         </div>
-    </>
+        </>
+    }
+    />
+        <Route path="/:id" element={<SingleBlog/>}/>
+        </Routes>
+        </BrowserRouter>
+        
+    
   );
 }
 export default App;

@@ -1,7 +1,10 @@
 import react from 'react'
+import {useNavigate} from 'react-router-dom';
 const Card = ({row}) => {
+    const nav = useNavigate()
     return (
-        <div>
+        <div onClick ={ ()=>nav(`/${row.id}`)}>
+            <h1>{row.id}</h1>
             <img src={row.avatar} style={{width:'200px',height:'200px'}}/>
             <h3>{row.name}</h3>
             <p>{row.desc.slice(0,90)}</p>
@@ -9,4 +12,4 @@ const Card = ({row}) => {
     )
 
 }
-export default Card
+export default Card;
